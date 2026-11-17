@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhi Gupta | RPG Resume &amp; Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =====================================================================
+         INTERACTIVE PINK & BROWN VIDEO GAME PORTFOLIO
+         ===================================================================== -->
+    <div id="game-view">
+        <!-- Top Game HUD -->
+        <header class="game-hud">
+            <div class="hud-inner">
+                <div class="player-badge">
+                    <span class="pixel-avatar" aria-hidden="true">&#9813;</span>
+                    <div>
+                        <span class="hud-name">PLAYER: SIDDHI</span>
+                        <span class="hud-rank" id="player-rank">LVL 1 &bull; FINTECH NOVICE</span>
+                    </div>
+                </div>
+
+                <div class="xp-wrapper" title="Click quests, skills, and trophies to earn XP!">
+                    <div class="xp-label-row">
+                        <span>EXP</span>
+                        <span id="xp-text">0 / 500 XP</span>
+                    </div>
+                    <div class="xp-bar-track">
+                        <div class="xp-bar-fill" id="xp-bar"></div>
+                    </div>
+                </div>
+
+                <div class="hud-controls">
+                    <button type="button" class="pixel-btn btn-sound" id="sound-toggle" aria-label="Toggle retro sound effects">
+                        SFX: ON
+                    </button>
+                    <button type="button" class="pixel-btn btn-ats" onclick="toggleResumeMode(true)">
+                        ATS RESUME
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Character Sheet -->
+        <main class="game-container">
+            <section class="character-card">
+                <div class="card-banner">
+                    <span>&#9733; CHARACTER SHEET &bull; NEW DELHI SERVER &#9733;</span>
+                    <span class="status-dot">ONLINE</span>
+                </div>
+
+                <div class="character-body">
+                    <div class="sprite-box">
+                        <div class="sprite-frame">
+                            <span class="sprite-icon" aria-hidden="true">&#128188;</span>
+                        </div>
+                        <span class="class-tag">DUAL-CLASS</span>
+                    </div>
+
+                    <div class="character-info">
+                        <h1 class="pixel-title">Siddhi Gupta</h1>
+                        <p class="character-class">B.Com Strategist &bull; IIM Bangalore BBA DBE Entrepreneur</p>
+                        <p class="character-bio">
+                            Building ventures at the intersection of finance, digital business, and market research. Click any quest card, skill slot, or trophy below to inspect stats and level up!
+                        </p>
+
+                        <div class="stat-bars">
+                            <div class="stat-item">
+                                <span class="stat-name">FINANCE &amp; ANALYTICS</span>
+                                <div class="stat-meter"><div class="stat-fill" style="width: 94%;"></div></div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">STRATEGY &amp; VENTURES</span>
+                                <div class="stat-meter"><div class="stat-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">LEADERSHIP &amp; ORATORY</span>
+                                <div class="stat-meter"><div class="stat-fill" style="width: 96%;"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a href="https://www.linkedin.com/in/siddhi-gupta-j300706/" target="_blank" rel="noopener noreferrer" class="pixel-btn btn-linkedin" onclick="gainXP(50, event, 'LinkedIn Linked!')">
+                                LINKEDIN (+50 XP)
+                            </a>
+                            <a href="mailto:siddhigupta307@gmail.com" class="pixel-btn btn-primary" onclick="gainXP(40, event, 'Mail Sent!')">
+                                EMAIL (+40 XP)
+                            </a>
+                            <button type="button" class="pixel-btn btn-secondary" onclick="copyPhone(event)">
+                                +91 7007827450
+                            </button>
+                            <button type="button" class="pixel-btn btn-gold" onclick="toggleResumeMode(true)">
+                                VIEW / PRINT ATS RESUME
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quest Log Section (Filterable) -->
+            <section class="game-panel" id="quests">
+                <div class="panel-header">
+                    <h2 class="panel-title">&#9876; QUEST LOG &amp; GUILDS</h2>
+                    <div class="quest-tabs" role="tablist">
+                        <button type="button" class="tab-btn active" data-filter="all" onclick="filterQuests('all', this)">ALL (10)</button>
+                        <button type="button" class="tab-btn" data-filter="work" onclick="filterQuests('work', this)">PRO XP</button>
+                        <button type="button" class="tab-btn" data-filter="edu" onclick="filterQuests('edu', this)">ACADEMY</button>
+                        <button type="button" class="tab-btn" data-filter="lead" onclick="filterQuests('lead', this)">LEADERSHIP</button>
+                    </div>
+                </div>
+
+                <div class="quest-grid" id="quest-grid">
+                    <!-- Main Quest: Professional Experience -->
+                    <article class="quest-card featured-quest" data-category="work" onclick="completeQuest(this, 100, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-main">MAIN QUEST &bull; +100 XP</span>
+                            <span class="quest-date">Nov 2026 &ndash; Present</span>
+                        </div>
+                        <h3>Founders Office Intern</h3>
+                        <p class="quest-org">Sarangi Group</p>
+                        <ul class="quest-details">
+                            <li>Conducted deep market research to evaluate new venture opportunities.</li>
+                            <li>Prepared in-depth financial and operational business models.</li>
+                            <li>Built structured databases for strategic intelligence.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Academy Quest 1 -->
+                    <article class="quest-card" data-category="edu" onclick="completeQuest(this, 80, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-edu">ACADEMY &bull; +80 XP</span>
+                            <span class="quest-date">2026 &ndash; 2029</span>
+                        </div>
+                        <h3>BBA &ndash; Digital Business &amp; Entrepreneurship</h3>
+                        <p class="quest-org">Indian Institute of Management Bangalore (IIM Bangalore)</p>
+                        <p class="quest-note">Dual-degree track focused on digital ventures, venture scaling, and modern business strategy.</p>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Academy Quest 2 -->
+                    <article class="quest-card" data-category="edu" onclick="completeQuest(this, 80, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-edu">ACADEMY &bull; +80 XP</span>
+                            <span class="quest-date">2026 &ndash; 2029</span>
+                        </div>
+                        <h3>Bachelor of Commerce (B.Com)</h3>
+                        <p class="quest-org">Gargi College, University of Delhi</p>
+                        <p class="quest-note">Core grounding in corporate finance, accounting, economics, and commercial law.</p>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Academy Quest 3 -->
+                    <article class="quest-card" data-category="edu" onclick="completeQuest(this, 50, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-edu">ORIGIN STORY &bull; +50 XP</span>
+                            <span class="quest-date">Senior Secondary</span>
+                        </div>
+                        <h3>St. Mary's Convent High School</h3>
+                        <p class="quest-org">Mathematics, Accountancy, English, Economics &amp; Business</p>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Guild Quest 1 -->
+                    <article class="quest-card" data-category="lead" onclick="completeQuest(this, 60, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-guild">GUILD &bull; +60 XP</span>
+                            <span class="quest-date">Gargi College</span>
+                        </div>
+                        <h3>Fintech Associate</h3>
+                        <p class="quest-org">Finance &amp; Investment Club</p>
+                        <ul class="quest-details">
+                            <li>Conducting finance and fintech research and contributing to live projects.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Guild Quest 2 -->
+                    <article class="quest-card" data-category="lead" onclick="completeQuest(this, 50, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-guild">GUILD &bull; +50 XP</span>
+                            <span class="quest-date">Gargi College</span>
+                        </div>
+                        <h3>Corporate Team Member</h3>
+                        <p class="quest-org">Commerce Association</p>
+                        <ul class="quest-details">
+                            <li>Supporting corporate outreach and association initiatives.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Guild Quest 3 -->
+                    <article class="quest-card" data-category="lead" onclick="completeQuest(this, 50, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-guild">SCRIBE &bull; +50 XP</span>
+                            <span class="quest-date">Gargi College</span>
+                        </div>
+                        <h3>Correspondent</h3>
+                        <p class="quest-org">Comascent, Commerce Department Magazine</p>
+                        <ul class="quest-details">
+                            <li>Contributing to the department magazine through reporting and content development.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Leadership Quest 4 -->
+                    <article class="quest-card" data-category="lead" onclick="completeQuest(this, 90, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-boss">CAPTAIN &bull; +90 XP</span>
+                            <span class="quest-date">School Leadership</span>
+                        </div>
+                        <h3>Head Girl</h3>
+                        <p class="quest-org">St. Mary's Convent High School</p>
+                        <ul class="quest-details">
+                            <li>Led the Student Council and represented the student body.</li>
+                            <li>Organized school-wide initiatives coordinating students, faculty, and volunteers.</li>
+                            <li>Managed the school's 125th Anniversary Celebration.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Leadership Quest 5 -->
+                    <article class="quest-card" data-category="lead" onclick="completeQuest(this, 70, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-guild">EDITOR &bull; +70 XP</span>
+                            <span class="quest-date">Annual Publication</span>
+                        </div>
+                        <h3>Editor &ndash; Echoes</h3>
+                        <p class="quest-org">Annual School Magazine</p>
+                        <ul class="quest-details">
+                            <li>Led editorial planning and coordinated contributors to publish on schedule.</li>
+                            <li>Streamlined content review workflows and launched themed editions.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+
+                    <!-- Side Quest: Community Service -->
+                    <article class="quest-card" data-category="lead" onclick="completeQuest(this, 60, event)">
+                        <div class="quest-top">
+                            <span class="quest-badge badge-side">CO-OP QUEST &bull; +60 XP</span>
+                            <span class="quest-date">Volunteering</span>
+                        </div>
+                        <h3>Community Service &amp; Impact</h3>
+                        <p class="quest-org">Muskurahat Foundation &amp; Social Drives</p>
+                        <ul class="quest-details">
+                            <li>Interned at Muskurahat Foundation educating underprivileged children.</li>
+                            <li>Supported cancer research fundraising and school cleanliness drives.</li>
+                        </ul>
+                        <span class="quest-status">CLICK TO CLAIM XP</span>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Trophy Cabinet & Equippable Inventory Grid -->
+            <div class="two-panel-row">
+                <!-- Trophy Cabinet -->
+                <section class="game-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">&#127942; TROPHY CABINET</h2>
+                    </div>
+                    <div class="trophy-list">
+                        <div class="trophy-item" onclick="gainXP(75, event, 'Finquest Trophy!')">
+                            <span class="trophy-medal">&#129353;</span>
+                            <div>
+                                <h3>3rd Position &ndash; Finquest 2026</h3>
+                                <p>Hindu College, University of Delhi (+75 XP)</p>
+                            </div>
+                        </div>
+                        <div class="trophy-item" onclick="gainXP(75, event, 'Commerce Gold!')">
+                            <span class="trophy-medal">&#129351;</span>
+                            <div>
+                                <h3>Gold Medalist &ndash; SOF Commerce Olympiad</h3>
+                                <p>National Academic Distinction (+75 XP)</p>
+                            </div>
+                        </div>
+                        <div class="trophy-item" onclick="gainXP(75, event, 'English Gold!')">
+                            <span class="trophy-medal">&#129351;</span>
+                            <div>
+                                <h3>Gold Medalist &ndash; SOF English Olympiad</h3>
+                                <p>National Academic Distinction (+75 XP)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Equippable Skill Inventory -->
+                <section class="game-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">&#127890; SKILL INVENTORY</h2>
+                        <span class="mini-hint">Click to equip!</span>
+                    </div>
+                    <div class="inventory-grid">
+                        <button type="button" class="inv-slot" onclick="toggleEquip(this, event)">Financial &amp; Analytical Thinking</button>
+                        <button type="button" class="inv-slot" onclick="toggleEquip(this, event)">Research &amp; Content Curation</button>
+                        <button type="button" class="inv-slot" onclick="toggleEquip(this, event)">Leadership &amp; Team Management</button>
+                        <button type="button" class="inv-slot" onclick="toggleEquip(this, event)">MS Office (Word, Excel, PPT)</button>
+                        <button type="button" class="inv-slot" onclick="toggleEquip(this, event)">Project &amp; Event Management</button>
+                        <button type="button" class="inv-slot" onclick="toggleEquip(this, event)">Public Speaking &amp; Debate</button>
+                        <button type="button" class="inv-slot interest-slot" onclick="toggleEquip(this, event)">&#9829; Venture Capital &amp; Startups</button>
+                        <button type="button" class="inv-slot interest-slot" onclick="toggleEquip(this, event)">&#9829; Finance &amp; Markets</button>
+                        <button type="button" class="inv-slot interest-slot" onclick="toggleEquip(this, event)">&#9829; Women in Entrepreneurship</button>
+                        <button type="button" class="inv-slot interest-slot" onclick="toggleEquip(this, event)">&#9829; Reading &amp; Literature</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Save / Export Banner -->
+            <footer class="game-footer">
+                <p>READY FOR RECRUITER SCREENING? SWITCH TO THE PLAIN, TRADITIONAL ATS RESUME FORMAT.</p>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/siddhi-gupta-j300706/" target="_blank" rel="noopener noreferrer" class="pixel-btn btn-linkedin" onclick="gainXP(25, event, 'LinkedIn Opened!')">
+                        LINKEDIN PROFILE
+                    </a>
+                    <button type="button" class="pixel-btn btn-gold" onclick="toggleResumeMode(true)">
+                        OPEN PLAIN ATS RESUME &amp; SAVE PDF
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- =====================================================================
+         PLAIN, TRADITIONAL ATS-FRIENDLY RESUME (PRINT & RECRUITER MODE)
+         ===================================================================== -->
+    <div id="ats-view" class="ats-wrapper hidden">
+        <div class="ats-toolbar no-print">
+            <span><strong>ATS-Friendly Plain Resume Mode</strong> &mdash; Single-column, standard serif typography, zero graphics for 100% ATS parsing.</span>
+            <div class="ats-toolbar-btns">
+                <button type="button" class="ats-btn-print" onclick="window.print()">Download / Print PDF</button>
+                <button type="button" class="ats-btn-back" onclick="toggleResumeMode(false)">Back to Game Portfolio</button>
+            </div>
+        </div>
+
+        <article class="ats-sheet">
+            <header class="ats-header">
+                <h1>SIDDHI GUPTA</h1>
+                <p class="ats-tagline">B.Com Student | BBA DBE | Finance &amp; Investment</p>
+                <p class="ats-contact">
+                    New Delhi, India | +91 7007827450 | siddhigupta307@gmail.com |
+                    <a href="https://www.linkedin.com/in/siddhi-gupta-j300706/" target="_blank" rel="noopener noreferrer">linkedin.com/in/siddhi-gupta-j300706</a>
+                </p>
+            </header>
+
+            <section class="ats-section">
+                <h2>EDUCATION</h2>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Indian Institute of Management Bangalore (IIM Bangalore)</strong>
+                        <span>2026 &ndash; 2029</span>
+                    </div>
+                    <p>Bachelor of Business Administration &ndash; Digital Business &amp; Entrepreneurship (BBA DBE)</p>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Gargi College, University of Delhi</strong>
+                        <span>2026 &ndash; 2029</span>
+                    </div>
+                    <p>Bachelor of Commerce (B.Com)</p>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>St. Mary's Convent High School</strong>
+                        <span>Senior Secondary</span>
+                    </div>
+                    <p>Relevant Coursework: Mathematics, Accountancy, English, Economics, and Business</p>
+                </div>
+            </section>
+
+            <section class="ats-section">
+                <h2>PROFESSIONAL EXPERIENCE</h2>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Founders Office Intern &mdash; Sarangi Group</strong>
+                        <span>Nov 2026 &ndash; Present</span>
+                    </div>
+                    <ul>
+                        <li>Conducted deep market research for new ventures.</li>
+                        <li>Prepared in-depth business models.</li>
+                        <li>Prepared and maintained structured databases.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="ats-section">
+                <h2>CAMPUS &amp; LEADERSHIP EXPERIENCE</h2>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Fintech Associate &mdash; Finance &amp; Investment Club, Gargi College</strong>
+                    </div>
+                    <ul>
+                        <li>Conducting finance and fintech research and contributing to live projects.</li>
+                    </ul>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Corporate Team Member &mdash; Commerce Association, Gargi College</strong>
+                    </div>
+                    <ul>
+                        <li>Supporting corporate outreach and association initiatives.</li>
+                    </ul>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Correspondent &mdash; Comascent, Commerce Department Magazine, Gargi College</strong>
+                    </div>
+                    <ul>
+                        <li>Contributing to the department magazine through reporting and content development.</li>
+                    </ul>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Head Girl &mdash; St. Mary's Convent High School</strong>
+                    </div>
+                    <ul>
+                        <li>Led the Student Council and represented the student body.</li>
+                        <li>Organized school-wide initiatives and events, coordinating students, faculty, and volunteers.</li>
+                        <li>Managed the school's 125th Anniversary Celebration, driving participation and smooth execution.</li>
+                    </ul>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Editor &mdash; Echoes (Annual School Magazine)</strong>
+                    </div>
+                    <ul>
+                        <li>Led editorial planning and coordinated contributors to publish the annual magazine on schedule.</li>
+                        <li>Introduced workflow improvements to streamline content review.</li>
+                        <li>Increased student engagement through themed editions and interactive initiatives.</li>
+                    </ul>
+                </div>
+                <div class="ats-entry">
+                    <div class="ats-row">
+                        <strong>Community Service &amp; Volunteering</strong>
+                    </div>
+                    <ul>
+                        <li>Interned at Muskurahat Foundation, focused on providing education to underprivileged children.</li>
+                        <li>Participated in fundraising initiatives supporting cancer research.</li>
+                        <li>Volunteered for a school-organized cleanliness drive.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="ats-section">
+                <h2>ACHIEVEMENTS</h2>
+                <ul>
+                    <li><strong>3rd Position</strong>, Finquest 2026 &mdash; Hindu College, University of Delhi</li>
+                    <li><strong>Gold Medalist</strong>, SOF Commerce Olympiad</li>
+                    <li><strong>Gold Medalist</strong>, SOF English Olympiad</li>
+                </ul>
+            </section>
+
+            <section class="ats-section">
+                <h2>KEY SKILLS &amp; INTERESTS</h2>
+                <p><strong>Skills:</strong> Financial &amp; Analytical Thinking, Research &amp; Content Curation, Leadership &amp; Team Management, MS Office (Word, Excel, PowerPoint), Project &amp; Event Management, Public Speaking &amp; Communication, Debate, Quiz, Creative Writing &amp; Elocution.</p>
+                <p><strong>Interests:</strong> Finance, Markets, Venture Capital &amp; Startups, Women in Business &amp; Entrepreneurship, Community Building, Reading &amp; Literature.</p>
+            </section>
+        </article>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

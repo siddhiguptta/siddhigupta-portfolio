@@ -1,0 +1,736 @@
+/* ==========================================================================
+   COZY PINK & ESPRESSO BROWN RPG PORTFOLIO STYLES
+   ========================================================================== */
+:root {
+    --bg-cream: #fff5f8;
+    --bg-blush: #ffe4ee;
+    --card-pink: #fff9fb;
+    --pink-soft: #f9a8d4;
+    --pink-hot: #ec4899;
+    --pink-deep: #be185d;
+    --brown-dark: #2c1810;
+    --brown-med: #4a2c2a;
+    --brown-warm: #7c4d3e;
+    --brown-latte: #d6b8a9;
+    --gold-coin: #f59e0b;
+    --gold-light: #fef3c7;
+    --mint-ok: #10b981;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-cream);
+    background-image: radial-gradient(var(--pink-soft) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--brown-dark);
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   1. Top RPG HUD Bar
+   ========================================================================== */
+.game-hud {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background-color: var(--brown-dark);
+    color: #fff5f8;
+    border-bottom: 4px solid var(--pink-hot);
+    box-shadow: 0 4px 0 rgba(44, 24, 16, 0.25);
+}
+
+.hud-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.player-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pixel-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: var(--pink-hot);
+    color: #ffffff;
+    border: 2px solid #fff5f8;
+    font-size: 1.3rem;
+}
+
+.hud-name {
+    display: block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.68rem;
+    color: var(--pink-soft);
+}
+
+.hud-rank {
+    display: block;
+    font-family: 'VT323', monospace;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+}
+
+.xp-wrapper {
+    flex: 1;
+    min-width: 190px;
+    max-width: 300px;
+}
+
+.xp-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.58rem;
+    margin-bottom: 5px;
+    color: var(--gold-light);
+}
+
+.xp-bar-track {
+    height: 14px;
+    background-color: var(--brown-med);
+    border: 2px solid var(--pink-soft);
+    padding: 2px;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    width: 12%;
+    background: linear-gradient(90deg, var(--pink-hot), var(--gold-coin));
+    transition: width 0.35s ease;
+}
+
+.hud-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   2. Pixel Buttons
+   ========================================================================== */
+.pixel-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.62rem;
+    padding: 10px 14px;
+    border: 3px solid var(--brown-dark);
+    box-shadow: 3px 3px 0 var(--brown-dark);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.pixel-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--brown-dark);
+}
+
+.btn-sound {
+    background-color: var(--brown-med);
+    color: var(--pink-soft);
+    border-color: var(--pink-soft);
+    box-shadow: 3px 3px 0 #000000;
+}
+
+.btn-ats {
+    background-color: var(--gold-coin);
+    color: var(--brown-dark);
+    border-color: #ffffff;
+    box-shadow: 3px 3px 0 #000000;
+}
+
+.btn-linkedin {
+    background-color: #f472b6;
+    color: var(--brown-dark);
+}
+
+.btn-primary {
+    background-color: var(--pink-hot);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: var(--bg-blush);
+    color: var(--brown-dark);
+}
+
+.btn-gold {
+    background-color: var(--gold-coin);
+    color: var(--brown-dark);
+}
+
+/* ==========================================================================
+   3. Main Game Container & Character Card
+   ========================================================================== */
+.game-container {
+    max-width: 1080px;
+    margin: 28px auto 60px;
+    padding: 0 20px;
+}
+
+.character-card, .game-panel, .game-footer {
+    background-color: var(--card-pink);
+    border: 4px solid var(--brown-dark);
+    box-shadow: 6px 6px 0 var(--brown-dark);
+    margin-bottom: 28px;
+}
+
+.card-banner {
+    background-color: var(--brown-med);
+    color: var(--pink-soft);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    padding: 10px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--brown-dark);
+}
+
+.status-dot {
+    background-color: var(--mint-ok);
+    color: var(--brown-dark);
+    padding: 3px 8px;
+}
+
+.character-body {
+    padding: 26px;
+    display: flex;
+    gap: 26px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.sprite-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.sprite-frame {
+    width: 118px;
+    height: 118px;
+    background-color: var(--bg-blush);
+    border: 4px solid var(--brown-dark);
+    box-shadow: 4px 4px 0 var(--pink-hot);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sprite-icon {
+    font-size: 3.5rem;
+}
+
+.class-tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.56rem;
+    background-color: var(--brown-dark);
+    color: var(--gold-light);
+    padding: 5px 8px;
+}
+
+.character-info {
+    flex: 1;
+    min-width: 260px;
+}
+
+.pixel-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.55rem;
+    color: var(--brown-dark);
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 0 var(--pink-soft);
+}
+
+.character-class {
+    font-weight: 700;
+    color: var(--pink-deep);
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.character-bio {
+    color: var(--brown-med);
+    margin-bottom: 18px;
+    max-width: 680px;
+}
+
+.stat-bars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.stat-name {
+    display: block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    color: var(--brown-med);
+    margin-bottom: 5px;
+}
+
+.stat-meter {
+    height: 12px;
+    background-color: var(--bg-blush);
+    border: 2px solid var(--brown-dark);
+}
+
+.stat-fill {
+    height: 100%;
+    background-color: var(--pink-hot);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ==========================================================================
+   4. Quest Log & Filter Tabs
+   ========================================================================== */
+.game-panel {
+    padding: 24px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 3px dashed var(--brown-latte);
+}
+
+.panel-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.92rem;
+    color: var(--brown-dark);
+}
+
+.quest-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tab-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.56rem;
+    padding: 8px 10px;
+    background-color: var(--bg-blush);
+    color: var(--brown-dark);
+    border: 2px solid var(--brown-dark);
+    cursor: pointer;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background-color: var(--brown-dark);
+    color: var(--pink-soft);
+}
+
+.quest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.quest-card {
+    background-color: #ffffff;
+    border: 3px solid var(--brown-dark);
+    box-shadow: 4px 4px 0 var(--brown-latte);
+    padding: 18px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.quest-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--pink-hot);
+}
+
+.featured-quest {
+    grid-column: 1 / -1;
+    background-color: var(--bg-blush);
+}
+
+.quest-card.claimed {
+    border-color: var(--pink-deep);
+    background-color: #fff0f6;
+}
+
+.quest-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.quest-badge {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.52rem;
+    padding: 4px 8px;
+    border: 2px solid var(--brown-dark);
+}
+
+.badge-main { background-color: var(--gold-coin); color: var(--brown-dark); }
+.badge-edu { background-color: var(--pink-soft); color: var(--brown-dark); }
+.badge-guild { background-color: #fbcfe8; color: var(--brown-dark); }
+.badge-boss { background-color: var(--pink-hot); color: #ffffff; }
+.badge-side { background-color: #fde68a; color: var(--brown-dark); }
+
+.quest-date {
+    font-family: 'VT323', monospace;
+    font-size: 1.15rem;
+    color: var(--brown-warm);
+    font-weight: 700;
+}
+
+.quest-card h3 {
+    font-size: 1.12rem;
+    color: var(--brown-dark);
+    margin-bottom: 2px;
+}
+
+.quest-org {
+    font-weight: 700;
+    color: var(--pink-deep);
+    font-size: 0.94rem;
+    margin-bottom: 8px;
+}
+
+.quest-details {
+    padding-left: 18px;
+    color: var(--brown-med);
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+}
+
+.quest-note {
+    color: var(--brown-med);
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+}
+
+.quest-status {
+    margin-top: auto;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.52rem;
+    color: var(--brown-warm);
+}
+
+.quest-card.claimed .quest-status {
+    color: var(--pink-deep);
+}
+
+/* ==========================================================================
+   5. Trophy Cabinet & Inventory
+   ========================================================================== */
+.two-panel-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.trophy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trophy-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #ffffff;
+    border: 3px solid var(--brown-dark);
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: transform 0.12s ease;
+}
+
+.trophy-item:hover {
+    transform: translateX(4px);
+    background-color: var(--gold-light);
+}
+
+.trophy-medal {
+    font-size: 1.8rem;
+}
+
+.trophy-item h3 {
+    font-size: 0.98rem;
+    color: var(--brown-dark);
+}
+
+.trophy-item p {
+    font-size: 0.85rem;
+    color: var(--brown-warm);
+}
+
+.mini-hint {
+    font-family: 'VT323', monospace;
+    font-size: 1.15rem;
+    color: var(--pink-deep);
+}
+
+.inventory-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.inv-slot {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    color: var(--brown-dark);
+    border: 2px solid var(--brown-dark);
+    box-shadow: 2px 2px 0 var(--brown-dark);
+    cursor: pointer;
+    transition: all 0.12s ease;
+}
+
+.interest-slot {
+    background-color: var(--bg-blush);
+}
+
+.inv-slot.equipped {
+    background-color: var(--gold-coin);
+    color: var(--brown-dark);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--brown-dark);
+}
+
+.game-footer {
+    background-color: var(--brown-dark);
+    color: #fff5f8;
+    padding: 22px;
+    text-align: center;
+}
+
+.game-footer p {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
+    color: var(--pink-soft);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* Floating XP Popup */
+.xp-floater {
+    position: fixed;
+    pointer-events: none;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.72rem;
+    color: var(--pink-deep);
+    background-color: var(--gold-light);
+    border: 2px solid var(--brown-dark);
+    padding: 4px 8px;
+    z-index: 9999;
+    animation: floatUp 0.95s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-38px); }
+}
+
+/* ==========================================================================
+   6. PLAIN ATS-FRIENDLY RESUME STYLES (TRADITIONAL & PRINTABLE)
+   ========================================================================== */
+.ats-wrapper {
+    background-color: #e5e7eb;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+}
+
+.ats-toolbar {
+    max-width: 820px;
+    margin: 0 auto 18px;
+    background-color: #1f2937;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.ats-toolbar-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.ats-btn-print, .ats-btn-back {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ats-btn-print {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
+.ats-btn-back {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.ats-sheet {
+    max-width: 820px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Times New Roman", Times, Georgia, serif;
+    padding: 48px 54px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    line-height: 1.42;
+}
+
+.ats-header {
+    text-align: center;
+    border-bottom: 1.5px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.ats-header h1 {
+    font-size: 20pt;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.ats-tagline {
+    font-size: 10.5pt;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.ats-contact {
+    font-size: 10pt;
+}
+
+.ats-contact a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.ats-section {
+    margin-bottom: 13px;
+}
+
+.ats-section h2 {
+    font-size: 11.5pt;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 2px;
+    margin-bottom: 7px;
+    letter-spacing: 0.4px;
+}
+
+.ats-entry {
+    margin-bottom: 8px;
+}
+
+.ats-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5pt;
+}
+
+.ats-entry p {
+    font-size: 10.5pt;
+}
+
+.ats-section ul {
+    padding-left: 20px;
+    font-size: 10.5pt;
+}
+
+.ats-section li {
+    margin-bottom: 2px;
+}
+
+.ats-section p {
+    font-size: 10.5pt;
+    margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+    .stat-bars, .quest-grid, .two-panel-row {
+        grid-template-columns: 1fr;
+    }
+    .pixel-title {
+        font-size: 1.2rem;
+    }
+    .ats-sheet {
+        padding: 28px 22px;
+    }
+}
+
+@media print {
+    body {
+        background: #ffffff !important;
+    }
+    #game-view, .no-print {
+        display: none !important;
+    }
+    #ats-view {
+        display: block !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+    }
+    .ats-sheet {
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+}
